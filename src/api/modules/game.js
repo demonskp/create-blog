@@ -20,7 +20,7 @@ export async function deletePinyinWords(id) {
 }
 
 export async function queryPinyinWords(game) {
-  const list = getPinyinWords();
+  const list = await getPinyinWords();
   const result = list.find((item) => item.game === game);
   return result;
 }

@@ -1,9 +1,18 @@
 <script setup>
-import { ElMessageBox } from "element-plus";
-import { ref } from "vue";
+import { ElMessageBox, ElDialog, ElButton } from "element-plus";
+import { onMounted, onUnmounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { gameApi } from "../../../api";
 import LinkItem from "./LinkItem.vue";
+import { Howl } from "howler";
+
+import wowSoundSrc from "../../../assets/sounds/link-game/wow.mp3";
+import unbelievableSrc from "../../../assets/sounds/link-game/unbelievable.mp3";
+import goodSrc from "../../../assets/sounds/link-game/good.mp3";
+import victorySrc from "../../../assets/sounds/link-game/victory.mp3";
+import errAoSrc from "../../../assets/sounds/link-game/err-ao.mp3";
+import bgSrc from "../../../assets/sounds/link-game/bg.mp3";
+
 const spellArr = ref([]);
 
 const score = ref(0);
@@ -13,8 +22,36 @@ const leftSelect = ref("");
 const rightSelect = ref("");
 const rightCheckMap = ref({});
 const router = useRouter();
+const dialogShow = ref(true);
 
-init();
+const unbilivableSound = new Howl({
+  src: unbelievableSrc,
+});
+
+const wowSound = new Howl({
+  src: wowSoundSrc,
+});
+
+const goodSound = new Howl({
+  src: goodSrc,
+});
+
+const victorySound = new Howl({
+  src: victorySrc,
+});
+const errAoSound = new Howl({
+  src: errAoSrc,
+});
+
+const bgSound = new Howl({
+  src: bgSrc,
+  loop: true,
+  volume: 0.2,
+});
+
+onUnmounted(() => {
+  bgSound.stop();
+});
 
 function mixArr(arr) {
   let left = [];
@@ -44,6 +81,7 @@ function createCheckMap(arr) {
 }
 
 async function init() {
+  dialogShow.value = false;
   const wordsItem = await gameApi.queryPinyinWords("连连看");
   spellArr.value = wordsItem?.words.slice(0, 16) || [];
 
@@ -62,6 +100,8 @@ async function init() {
   score.value = 0;
   leftSelect.value = "";
   rightSelect.value = "";
+
+  bgSound.play();
 }
 
 function itemClickHandle(item, type) {
@@ -74,10 +114,34 @@ function itemClickHandle(item, type) {
   checkRight();
 }
 
+function yesSoundsPlay() {
+  const yesSounds = [unbilivableSound, wowSound, goodSound, unbilivableSound];
+  const yesIndex = Math.round(Math.random() * 3);
+  yesSounds[yesIndex]?.play();
+}
+
+function victorySoundPlay() {
+  victorySound.play();
+}
+
+function errSoundPlay() {
+  errAoSound.play();
+}
+
 function checkRight() {
   const key = leftSelect.value;
   const val = rightSelect.value;
 
+  console.log(key, val);
+  if (!(key && val)) {
+    return;
+  }
+
+  if (rightCheckMap.value[key] !== val) {
+    errSoundPlay();
+  }
+
+  // 消除
   if (rightCheckMap.value[key] === val) {
     leftArr.value.map((item) => {
       if (item.name === key) {
@@ -90,11 +154,18 @@ function checkRight() {
       }
     });
     score.value = score.value + 10;
+    leftSelect.value = "";
+    rightSelect.value = "";
+
     if (!leftArr.value.filter((item) => item.alive).length) {
+      bgSound.stop();
+      victorySoundPlay();
       setTimeout(() => {
         alert("恭喜你取得胜利");
         init();
       });
+    } else {
+      yesSoundsPlay();
     }
   }
 }
@@ -126,6 +197,12 @@ function checkRight() {
       </div>
     </div>
   </div>
+  <ElDialog v-model="dialogShow" :show-close="false">
+    <div>连连看</div>
+    <div>
+      <ElButton @click="init">开始游戏</ElButton>
+    </div>
+  </ElDialog>
 </template>
 <style lang="less" scoped>
 .link-game {
