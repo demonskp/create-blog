@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^9.4.0",
+    "animejs": "^3.2.1",
     "element-plus": "^2.2.19",
     "howler": "^2.2.3",
     "pinyin-pro": "^3.11.0",

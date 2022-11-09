@@ -1,6 +1,6 @@
 <script setup>
 import { ElMessageBox, ElDialog, ElButton } from "element-plus";
-import { onMounted, onUnmounted, ref } from "vue";
+import { onUnmounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { gameApi } from "../../../api";
 import LinkItem from "./LinkItem.vue";
@@ -197,14 +197,22 @@ function checkRight() {
       </div>
     </div>
   </div>
-  <ElDialog v-model="dialogShow" :show-close="false">
-    <div>连连看</div>
-    <div>
+  <ElDialog v-model="dialogShow" :show-close="false" width="570px">
+    <template #header="{ titleId, titleClass }">
+      <h4 :id="titleId" :class="titleClass" style="text-align: center">
+        连连看
+      </h4>
+    </template>
+    <div style="text-align: center">
       <ElButton @click="init">开始游戏</ElButton>
     </div>
   </ElDialog>
 </template>
 <style lang="less" scoped>
+@font-face {
+  font-family: "HYJunKaiW";
+  src: url("../../../assets/fonts/HYJunKaiW.ttf");
+}
 .link-game {
   background: #000;
   display: flex;
@@ -213,6 +221,7 @@ function checkRight() {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  font-family: HYJunKaiW;
 
   .game-title {
     color: #fff;

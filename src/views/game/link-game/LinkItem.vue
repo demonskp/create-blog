@@ -37,7 +37,8 @@ const className = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 30px;
+  font-weight: 600;
 
   cursor: pointer;
 }
@@ -47,7 +48,7 @@ const className = computed(() => {
 
   border: 1px solid skyblue;
   color: skyblue;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .item-hide {
