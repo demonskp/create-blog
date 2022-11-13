@@ -22,4 +22,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: git update-index --chmod=+x deploy.sh
     - run: ./deploy.sh
