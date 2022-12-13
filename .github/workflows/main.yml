@@ -28,8 +28,8 @@ jobs:
     - run: cd dist
     - run: git init
     - run: echo 'demonskp.com.cn' > CNAME
-    - run: git remote add origin git@github.com:demonskp/demonskp.github.io.git
-    - run: git pull origin main
+    - run: git remote add blog git@github.com:demonskp/demonskp.github.io.git
+    - run: git pull blog main
     - run: git add .
     - run: git commit -m 'release'
-    - run: git push origin main
+    - run: git push blog main
