@@ -62,7 +62,6 @@ const courseList = [
           <router-link to="/" class="nav-bar-item">教程</router-link>
           <router-link to="/" class="nav-bar-item">笔记</router-link>
           <router-link to="/" class="nav-bar-item">猫猫</router-link>
-          <router-link to="/" class="nav-bar-item">简历</router-link>
           <router-link to="/" class="nav-bar-item">关于</router-link>
         </div>
       </div>
