@@ -31,6 +31,8 @@ jobs:
     - run: cd ../create-blog
     - run: npm run build
     - run: cd ../dist
+    - run: git config --global user.email "demonskp@qq.com"
+    - run: git config --global user.name "github action"
     - run: git add .
     - run: git commit -m 'release'
     - run: git push
