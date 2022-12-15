@@ -24,12 +24,13 @@ jobs:
         cache: 'npm'
     - run: npm config set registry https://registry.npm.taobao.org
     - run: npm install
-    - run: npm run build
+    - run: cd..
+    - run: mkdir dist
     - run: cd dist
-    - run: git init
-    - run: echo 'demonskp.com.cn' > CNAME
-    - run: git remote add blog https://github.com/demonskp/demonskp.github.io.git
-    - run: git pull blog main
+    - run: git clone https://github.com/demonskp/demonskp.github.io.git
+    - run: cd ../create-blog
+    - run: npm run build
+    - run: cd ../dist
     - run: git add .
     - run: git commit -m 'release'
-    - run: git push blog main
+    - run: git push
