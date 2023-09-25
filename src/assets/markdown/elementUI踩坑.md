@@ -14,7 +14,7 @@
 ## ElementUI form组件状态透传到自定义组件中
 
 
-![](./img/elementUI-form组件状态透传.png)
+![](./img/elementUI.png)
 
 当你的自定义组件被包含在formitem中时，form检验失败后会向内透传一个 validateState的状态，这个状态会导致你内部的所有组件都变成了 错误状态。
 

@@ -15,7 +15,7 @@ export const notes = [
     createTime: '2021.12.31',
     tags: ['问题', 'element-ui'],
     component: ()=>import("@/assets/markdown/elementUI踩坑.md"),
-    poster: "/src/assets/markdown/img/elementUI-form组件状态透传.png",
+    poster: "/src/assets/markdown/img/elementUI.png",
   }
 ].reverse();
 
