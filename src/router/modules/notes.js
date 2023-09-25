@@ -1,3 +1,5 @@
+import { notes } from "@/datas/notes";
+
 export default [
   {
     path: "/notes",
@@ -12,6 +14,11 @@ export default [
         path: '/notes/detail/:id',
         name: 'notes-detail',
         component: () => import("../../views/notes/detail/index.vue"),
+        children: notes.map(item=>({
+          path: `/notes/detail/${item.id}`,
+          component: item.component,
+          meta: item,
+        }))
       }
     ]
   },
