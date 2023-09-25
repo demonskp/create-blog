@@ -1,56 +1,6 @@
 <script setup>
 import CourseItem from "./CourseItem/index.vue";
-import vueIcon from "../../assets/images/vue.svg";
-
-const courseList = [
-  {
-    url: "https://www.jianshu.com/c/ca239b650143",
-    title: "ECMAScript",
-    subTitle: "规范解读",
-    backImg:
-      "https://ultimatecourses.com/assets/course/react/basics-46f680402a83e5d266bf96416961873b37a425ef9585831638f783ab26c6b48e.jpg",
-    poster:
-      "https://ultimatecourses.com/assets/category/javascript-58bb09245e2abeaf56f7db48e86fa4454c2f316a4c6c71aadaa2bdf3b206ab95.svg",
-    updateTime: "2022.10.29",
-    count: 4,
-    creater: {
-      name: "demonskp",
-      avatar: "https://avatars.githubusercontent.com/u/25999019?v=4",
-      link: "https://github.com/demonskp",
-    },
-  },
-  {
-    url: "",
-    title: "React",
-    subTitle: "源码解读",
-    backImg:
-      "https://ultimatecourses.com/assets/course/react/basics-46f680402a83e5d266bf96416961873b37a425ef9585831638f783ab26c6b48e.jpg",
-    poster:
-      "https://ultimatecourses.com/assets/category/react-d70ee2dc77a69c09d8eec8578ebba8c0b1eb5c1288c330c384d3674bc7e38409.svg",
-    updateTime: "2022.10.29",
-    count: 0,
-    creater: {
-      name: "demonskp",
-      avatar: "https://avatars.githubusercontent.com/u/25999019?v=4",
-      link: "https://github.com/demonskp",
-    },
-  },
-  {
-    url: "",
-    title: "Vue3",
-    subTitle: "源码解读",
-    backImg:
-      "https://ultimatecourses.com/assets/course/react/basics-46f680402a83e5d266bf96416961873b37a425ef9585831638f783ab26c6b48e.jpg",
-    poster: vueIcon,
-    updateTime: "2022.10.29",
-    count: 0,
-    creater: {
-      name: "demonskp",
-      avatar: "https://avatars.githubusercontent.com/u/25999019?v=4",
-      link: "https://github.com/demonskp",
-    },
-  },
-];
+import courseList from "@/datas/courses";
 </script>
 
 <template>
@@ -60,7 +10,7 @@ const courseList = [
         <div class="nav-bar">
           <router-link to="/game" class="nav-bar-item">游戏</router-link>
           <router-link to="/" class="nav-bar-item">教程</router-link>
-          <router-link to="/" class="nav-bar-item">笔记</router-link>
+          <router-link to="/notes" class="nav-bar-item">笔记</router-link>
           <router-link to="/" class="nav-bar-item">猫猫</router-link>
           <router-link to="/" class="nav-bar-item">关于</router-link>
         </div>

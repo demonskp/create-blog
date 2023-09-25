@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import game from "./modules/game";
+import notes from "./modules/notes";
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,7 @@ const router = createRouter({
           component: () => import("../views/home/index.vue"),
         },
         ...game,
+        ...notes,
       ],
     },
   ],
