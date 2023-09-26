@@ -37,6 +37,7 @@ console.log(route.meta)
 
   .tag_wrap {
     margin-bottom: 24px;
+    margin-top: 12px;
 
     .tag {
       background-color: #f7f8fa;

@@ -119,3 +119,9 @@ code {
     border-radius: 2px;
     white-space: inherit;
 }
+
+img {
+  margin: 1em 0;
+  border-radius: 4px;
+  max-width: 100%;
+}

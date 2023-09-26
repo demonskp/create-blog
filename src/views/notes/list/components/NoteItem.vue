@@ -59,6 +59,11 @@ const description = computed(()=>{
       font-size: 18px;
       font-weight: 700;
       line-height: 1.5;
+      color: #333;
+
+      &:visited {
+        color: #333;
+      }
     }
     .description {
       font-size: 13px;
