@@ -1,10 +1,13 @@
 <script setup>
-
+import SideBar from "./components/SideBar.vue"
 </script>
 <template>
 <div class="content_wrap">
   <div class="content">
     <router-view />
+  </div>
+  <div>
+    <SideBar />
   </div>
 </div>
 </template>

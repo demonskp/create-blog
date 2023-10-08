@@ -21,8 +21,8 @@ console.log(route.meta)
     </div>
   </div>
 </template>
-<style>
-@import url('@/assets/css/markdown.css');
+<style lang="less">
+@import url('@/assets/css/markdown.less');
 </style>
 <style lang="less" scoped>
 .markdown-wrap {
