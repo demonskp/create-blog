@@ -1,23 +1,27 @@
 <script setup>
-import { toRefs } from "vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
 import AvaterInfo from './components/AvaterInfo.vue'
 
 const route = useRoute();
 
-const { title, createTime, tags } = toRefs(route.meta || {})
 
-console.log(route.meta)
+const detailMeta = computed(()=>{
+  if(!route.meta) return {};
+  return {
+    ...route.meta
+  }
+})
 
 </script>
 <template>
   <div class="markdown-wrap">
-    <div class="title">{{ title }}</div>
-    <AvaterInfo :time="createTime" />
+    <div class="title">{{ detailMeta.title }}</div>
+    <AvaterInfo :time="detailMeta.createTime" />
     <router-view />
-    <div v-if="tags && tags.length" class="tag_wrap">
+    <div v-if="detailMeta.tags && detailMeta.tags.length" class="tag_wrap">
       <span>标签：</span>
-      <router-link v-for="tag in tags" :key="tag" class="tag" :to="`/notes?tag=${tag}`">{{ tag }}</router-link>
+      <router-link v-for="tag in detailMeta.tags" :key="tag" class="tag" :to="`/notes?tag=${tag}`">{{ tag }}</router-link>
     </div>
   </div>
 </template>

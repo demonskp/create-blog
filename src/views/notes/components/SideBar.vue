@@ -1,18 +1,19 @@
 <script setup>
+import { notesApi } from "@/api";
 import courses from "@/datas/courses";
 import { TagMap } from "@/datas/tags";
-import { useRouter } from "vue-router";
-
-const list = Object.keys(TagMap).map((key)=>{
-  const item = TagMap[key];
-  console.log(item)
-  return {
-    ...item,
-    key,
-  }
-}) || [];
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
+
+const subjectList = Object.keys(TagMap).map((key)=>({...TagMap[key], key})) || [];
+const likeList = computed(()=>{
+  if(!route.meta.id) return [];
+  const list = notesApi.getLikeNoteList(route.meta.id, 5);
+  return list;
+})
 
 function subjectClick(tagName) {
   router.push(`/notes?tag=${tagName}`)
@@ -27,12 +28,13 @@ function courseClick(course) {
   router.push(url || '/home');
 }
 
+function likeClick(likeItem) {
+  router.push(`/notes/detail/${likeItem.id}`)
+}
+
 </script>
 <template>
   <div class="side_bar_wrap">
-    <div>
-
-    </div>
     <div class="item">
       <div class="title">个人介绍</div>
       <div class="content">前端程序员</div>
@@ -40,9 +42,9 @@ function courseClick(course) {
     <div class="item">
       <div class="title">创建的专题</div>
       <div class="content">
-        <div class="subject" v-for="item in list" :key="item.key" @click="subjectClick(item.key)">
+        <div class="subject" v-for="item in subjectList" :key="item.key" @click="subjectClick(item.key)">
           <img :src="item.poster">
-          <span class="name">{{ item.key }}</span>
+          <span class="name ellipsis">{{ item.key }}</span>
         </div>
       </div>
     </div>
@@ -56,6 +58,18 @@ function courseClick(course) {
             <span>{{ " · " }}</span>
             <span>{{ course.subTitle }}</span>
           </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="side_bar_wrap" style="margin-top: 12px;">
+    <div class="item" v-if="likeList.length">
+      <div class="title">相关推荐</div>
+      <div class="content">
+        <div class="recommend" v-for="likeItem in likeList" :key="likeItem.id" @click="likeClick(likeItem)">
+          <div class="recommend_title ellipsis">{{ likeItem.title }}</div>
+          <div class="recommend_time">{{ likeItem.createTime }}</div>
         </div>
       </div>
     </div>
@@ -123,6 +137,24 @@ function courseClick(course) {
           font-size: 14px;
         }
       }
+
+      .recommend {
+        cursor: pointer;
+        margin-top: 2px;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+
+        .recommend_title {
+          color: var(--text-color);
+        }
+        .recommend_time {
+          color: var(--text-color-tips);
+          // text-align: right;
+        }
+      }
+
     }
   }
 }
