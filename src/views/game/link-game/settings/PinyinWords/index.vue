@@ -1,7 +1,7 @@
 <script setup>
 import { ElTable, ElTableColumn, ElPopconfirm, ElButton } from "element-plus";
 import { ref } from "vue-demi";
-import { gameApi } from "../../../../api";
+import { gameApi } from "@/api";
 import AddDrawer from "./AddDrawer.vue";
 
 const pinyinWords = ref([]);

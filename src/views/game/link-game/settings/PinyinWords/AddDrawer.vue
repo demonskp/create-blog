@@ -10,9 +10,9 @@ import {
   ElOption,
 } from "element-plus";
 import { defineProps, defineEmits, ref, computed } from "vue";
-import { gameApi } from "../../../../api";
+import { gameApi } from "@/api";
 import { pinyin } from "pinyin-pro";
-import { staticHelp } from "../../../../helper";
+import { staticHelp } from "@/helper";
 
 const props = defineProps({
   modelValue: Boolean,
