@@ -26,7 +26,7 @@ defineProps({
 
 <template>
   <section class="course-wrap">
-    <a :href="item.url" class="course-item">
+    <a :href="item.url" target="_blank" class="course-item">
       <img :src="item.backImg" alt="bg" class="course-item-header" />
       <div class="course-item-body">
         <div class="body-poster">

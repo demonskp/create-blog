@@ -1,5 +1,6 @@
 <script setup>
-import CourseItem from "./CourseItem/index.vue";
+import CourseItem from "./components/CourseItem.vue";
+import SelfIntroduce from "./components/SelfIntroduce.vue";
 import courseList from "@/datas/courses";
 </script>
 
@@ -16,7 +17,7 @@ import courseList from "@/datas/courses";
         </div>
       </div>
       <div class="introduction">
-        <div>aaaa</div>
+        <SelfIntroduce />
       </div>
     </header>
     <div class="content">
@@ -35,14 +36,8 @@ import courseList from "@/datas/courses";
 header {
   width: 100%;
   height: 70vh;
-  background: linear-gradient(
-      140deg,
-      rgba(177, 0, 255, 0.6),
-      rgba(69, 23, 113, 0.8),
-      rgba(71, 14, 126, 0.8),
-      rgba(177, 0, 255, 0.6)
-    ),
-    url(https://images.unsplash.com/photo-1464802686167-b939a6910659) center
+  background:
+    url(https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg) center
       center no-repeat;
   background-repeat: no-repeat;
   background-size: cover;

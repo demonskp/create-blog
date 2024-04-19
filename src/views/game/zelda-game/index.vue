@@ -2,5 +2,5 @@
 
 </script>
 <template>
-  <div>11111</div>
+  <div>暂未推出、敬请期待</div>
 </template>
