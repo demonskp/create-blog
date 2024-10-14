@@ -63,7 +63,34 @@ export const notes = [
     tags: ['ECMAScript 6 入门'],
     component: ()=>import("@/assets/markdown/新版Chrome(117), form target行为不一致问题.md"),
     poster: '',
-  }
+  },
+  {
+    id: '8',
+    title: 'form嵌套导致提交按钮刷新页面问题',
+    description: `在开发过程中突然发现，某一个表单内的一个组件一点击按钮就会导致页面刷新。这个页面的结构类似于一个 Form 表单，内部有很多组件。`,
+    createTime: '2024.10.01',
+    tags: ['问题'],
+    component: ()=>import("@/assets/markdown/form嵌套导致提交按钮刷新页面问题.md"),
+    poster: '',
+  },
+  {
+    id: '9',
+    title: 'node部署问题',
+    description: `部署时选用18.20.4镜像报错, 查到134为内存溢出等受环境影响而退出的错误`,
+    createTime: '2024.10.01',
+    tags: ['问题'],
+    component: ()=>import("@/assets/markdown/node部署问题.md"),
+    poster: '',
+  },
+  {
+    id: '10',
+    title: '一些编程习惯我怎么选',
+    description: `关于编程习惯，或者一些编程范式。每个人的选择可能都各有不同。每次换工作之后可能都会有一些见解不一样的地方，因此也在此记录一下自己平常编程的一些习惯。`,
+    createTime: '2024.10.01',
+    tags: [],
+    component: ()=>import("@/assets/markdown/一些编程习惯我怎么选.md"),
+    poster: '',
+  },
 ].reverse();
 
 const map = {};
