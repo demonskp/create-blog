@@ -3,6 +3,7 @@ import CourseItem from "./components/CourseItem.vue";
 import SelfIntroduce from "./components/SelfIntroduce.vue";
 import courseList from "@/datas/courses";
 import { MenuList } from '@/datas/menu';
+import CloudBg from "./components/CloudBg.vue"
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import { MenuList } from '@/datas/menu';
             }}</router-link>
         </div>
       </div>
+      <CloudBg />
       <div class="introduction">
         <SelfIntroduce />
       </div>
@@ -34,8 +36,7 @@ import { MenuList } from '@/datas/menu';
 header {
   width: 100%;
   height: 70vh;
-  background:
-    url(https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg) center center no-repeat;
+  background: hsl(200deg 70% 78%);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -131,7 +132,7 @@ header {
 }
 
 .my-site-ref {
-  background: linear-gradient(140deg, #740ba3, #3d1662, #3d1662, #740ba3);
+  background: hsl(200deg 70% 78%);
   min-height: 40vh;
   padding: 80px;
 }

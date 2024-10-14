@@ -8,16 +8,13 @@ import headJpg from "@/assets/images/header/header_pao.jpg"
       <img :src="headJpg" alt="" srcset="">
     </div>
     <div class="content_wrap">
-      <div>待业前端工程师，有岗位请联系。</div>
+      <div>普通前端程序员</div>
       <div class="connect_wrap">
-        <a href="mailto:demonskp@qq.com">
-          <i class="iconfont icon-email" />
-        </a>
         <a href="https://github.com/demonskp" target="_blank">
-          <i class="iconfont icon-github" />
+          <i class="iconfont icon-github" style="font-size: 32px;" />
         </a>
         <a href="mailto:demonskp@qq.com">
-          <i class="iconfont icon-weixin" />
+          <i class="iconfont icon-weixin" style="font-size: 32px;" />
         </a>
       </div>
     </div>
