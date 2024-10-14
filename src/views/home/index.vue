@@ -2,6 +2,7 @@
 import CourseItem from "./components/CourseItem.vue";
 import SelfIntroduce from "./components/SelfIntroduce.vue";
 import courseList from "@/datas/courses";
+import { MenuList } from '@/datas/menu';
 </script>
 
 <template>
@@ -9,11 +10,8 @@ import courseList from "@/datas/courses";
     <header>
       <div class="nav-wrap">
         <div class="nav-bar">
-          <router-link to="/game" class="nav-bar-item">游戏</router-link>
-          <router-link to="/" class="nav-bar-item">教程</router-link>
-          <router-link to="/notes" class="nav-bar-item">笔记</router-link>
-          <router-link to="/" class="nav-bar-item">猫猫</router-link>
-          <router-link to="/" class="nav-bar-item">关于</router-link>
+          <router-link v-for="item in MenuList" :key="item.key" :to="item.path" class="nav-bar-item">{{ item.label
+            }}</router-link>
         </div>
       </div>
       <div class="introduction">
@@ -37,8 +35,7 @@ header {
   width: 100%;
   height: 70vh;
   background:
-    url(https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg) center
-      center no-repeat;
+    url(https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg) center center no-repeat;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -101,9 +98,11 @@ header {
 
   .content-title {
     color: #545e6f;
+
     .content-title-main {
       font-size: 26px;
     }
+
     .content-title-sub {
       font-size: 16px;
       margin-top: 5px;
