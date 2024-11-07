@@ -2,13 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,25 +15,23 @@ jobs:
         node-version: [14.18.1]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm config set registry https://registry.npm.taobao.org
-    - run: npm install yarn -g
-    - run: yarn
-    - run: yarn build
-    - run: git config --global user.email "demonskp@qq.com"
-      # 部署
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: dist
-        token: ${{ secrets.ACCESS_TOKEN }}
-        repository-name: demonskp/demonskp.github.io
-        branch: main
-        clean: true
-        commit-message: "realse"
-
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm install yarn -g
+      - run: yarn
+      - run: yarn build
+      - run: git config --global user.email "demonskp@qq.com"
+        # 部署
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository-name: demonskp/demonskp.github.io
+          branch: main
+          clean: true
+          commit-message: "realse"
