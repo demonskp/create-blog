@@ -6,8 +6,8 @@ import AvaterInfo from './components/AvaterInfo.vue'
 const route = useRoute();
 
 
-const detailMeta = computed(()=>{
-  if(!route.meta) return {};
+const detailMeta = computed(() => {
+  if (!route.meta) return {};
   return {
     ...route.meta
   }
@@ -21,7 +21,8 @@ const detailMeta = computed(()=>{
     <router-view />
     <div v-if="detailMeta.tags && detailMeta.tags.length" class="tag_wrap">
       <span>标签：</span>
-      <router-link v-for="tag in detailMeta.tags" :key="tag" class="tag" :to="`/notes?tag=${tag}`">{{ tag }}</router-link>
+      <router-link v-for="tag in detailMeta.tags" :key="tag" class="tag" :to="`/notes?tag=${tag}`">{{ tag
+        }}</router-link>
     </div>
   </div>
 </template>
