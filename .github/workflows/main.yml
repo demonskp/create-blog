@@ -31,7 +31,7 @@ jobs:
         with:
           repository: demonskp/demonskp.github.io
           ref: main # 目标分支
-          token: ${{ secrets.REPO_B_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
       - name: Copy build output to Repository B
         run: |
           cp -R ./dist/* .
