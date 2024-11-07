@@ -27,11 +27,16 @@ jobs:
       - run: git config --global user.email "demonskp@qq.com"
         # 部署
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/checkout@v2
         with:
-          folder: dist
-          token: ${{ secrets.ACCESS_TOKEN }}
-          repository-name: demonskp/demonskp.github.io
-          branch: main
-          clean: true
-          commit-message: "realse"
+          repository: demonskp/demonskp.github.io
+          ref: main # 目标分支
+          token: ${{ secrets.REPO_B_TOKEN }}
+      - name: Copy build output to Repository B
+        run: |
+          cp -R ./dist/* .
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git add .
+          git commit -m 'Deploy from repo-A'
+          git push
