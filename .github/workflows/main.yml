@@ -36,7 +36,9 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: Copy build output to Repository B
         run: |
+          cd ../
           ls
+          cd deploy
           cp -R ../dist/* .
           git config user.name 'github-actions'
           git config user.email 'github-actions@github.com'
